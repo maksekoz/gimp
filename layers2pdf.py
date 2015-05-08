@@ -33,13 +33,15 @@ def layers2pdf(Image, Draw, OutDir, OutFile, Type):
         fullpath = tmpDir + '/' + layer.name + ext
         filename = os.path.basename(fullpath)
 
-        pdb.plug_in_unsharp_mask(Image, layer, 2.0, 0.50, 0)
+#        pdb.plug_in_unsharp_mask(Image, layer, 2.0, 0.50, 0)
     
         if (Type == 0):
+            layer.visible = 1
             pdb.file_pdf_save(Image, layer, 
                 fullpath, 
                 filename, 
-                True, False, False)
+                1, 0, 0)
+            layer.visible = 0
             continue
         elif (Type == 1):
             pdb.file_jpeg_save(Image, layer,
@@ -75,7 +77,7 @@ register(
     'GPLv3',
     'May 2015',
     '<Image>/Filters/Batch/Layers to PDF...',
-    'RGB* GRAY*',
+    'RGB* GRAY* INDEXED*',
     [
         (PF_DIRNAME, 'out-dir', 'Output directory', os.getcwd()),
         (PF_STRING, 'out-file', 'Output filename', "out.pdf"),

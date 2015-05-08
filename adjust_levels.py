@@ -8,7 +8,7 @@ def adjust_levels(Image, Draw, x, y, w, h, LowLevel, HighLevel, Gamma):
     maxWidth = w
     maxHeight = h
 
-    pdb.gimp_image_select_rectangle(Image, CHANNEL_OP_ADD, 
+    pdb.gimp_image_select_rectangle(Image, CHANNEL_OP_ADD,
             x, y, maxWidth, maxHeight)
 
     for layer in Image.layers:
